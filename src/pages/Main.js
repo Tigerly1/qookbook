@@ -8,7 +8,8 @@ export default function Main() {
   const [ingredients, addIngredient] = useState([])
   const [next_page, go_next_page] = useState(false)
   const [load_recipes, lets_load] = useState(false)
-  const [loaded_recipes, actual_recipes] = useState({})
+  const [type_of_get, swap_get] = useState("full")
+  const [loaded_recipes, actual_recipes] = useState([])
 
   function change_overlay(){
     if(ingredients.length > 0){
@@ -17,24 +18,91 @@ export default function Main() {
     
   }
 
+  async function Fetcher() {
+    let url = "https://qkbk-backend.herokuapp.com/api/v1/get-recipes-by-ingredients-"
+    url += type_of_get
+    let params = "?"
+    ingredients.map((e,i)=>{
+        if(i>0){
+            params += "&names="+e
+        }else{
+            params += "names="+e
+        }
+    })
+    var myHeaders = new Headers();
+        
+    var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+    };
+
+    let recipes = await fetch(url+params, requestOptions)
+    .then(response => response.text())
+    .then(result => result)
+    .then(result=>{
+        console.log(JSON.parse(result))
+        actual_recipes(JSON.parse(result))
+    })
+    .catch(error => console.log('error', error));
+    
+    
+
+    return null;
+  }
+
   function load_recipes_switch(){
+    if(!load_recipes){
+      Fetcher()
+    }
     lets_load(!load_recipes)
+    
   }
 
   function add_ingredient(ingr){
     addIngredient(old => [...old, ingr])
-    console.log(ingredients)
   }
   /* INPUT({defaultValue: value, ref: ref, onBlur: hide,
     onKeyUp: (e) => this.acceptKey(e) && hide(),
     autoFocus: true, type: "text", style: {width:"100%"}} */
-  function accept_input(e){
-    console.log(e.key)
-    if(["Enter","Escape"," "].includes(e.key)) {
+
+  async function fetchData (string) {
+      const url = "https://qkbk-backend.herokuapp.com/api/v1/get-ingredients-by-string"
+      var myHeaders = new Headers();
+      let params = "?string="+string;
+      var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+      };
+      let result = []
+      result = await fetch(url+params, requestOptions)
+      .then(response => response.text())
+      .then(result => result)
+      .catch(error => console.log('error', error));
+      return JSON.parse(result)
+  }
+
+
+  async function ingr_input(e){
+    document.getElementById("inp-datalist").innerHTML = ''
+    let string = await fetchData(e.target.value)
+    datalist_render(string)
+    if(/* ["Enter","Escape"," "].includes(e.key) || */ string.includes(e.target.value)) {
       add_ingredient(e.target.value);
       e.target.value = ""
     }
   }
+  function datalist_render(string){
+    
+    string.map((e, i)=>{
+      let opt = document.createElement("option");
+      opt.value = e
+      document.getElementById("inp-datalist").appendChild(opt)
+    })
+  }
+
+
   function render_ingredients(){
     return ingredients.map((e, i)=>{
       return <div key={i}className="self-center mt-6"><input type="text" className=" self-center w-80 h-8 border-gray-50 rounded-md pl-5 font-bold" defaultValue={e}/></div>
@@ -43,10 +111,10 @@ export default function Main() {
 
   return (
     <div>
-        <div className="flex flex-col min-h-screen justify-start font-sans" style={{backgroundColor: "#f1f8ed", color: "#97daaf", display: (!load_recipes)?"flex":"none"}}>
+        <div className="flex flex-col h-screen justify-start font-sans" style={{minHeight: "-webkit-fill-available",backgroundColor: "#f1f8ed", color: "#97daaf", display: (!load_recipes)?"flex":"none"}}>
           <div className="text-9xl  self-center font-daretro mt-52 " style={{}}>QookBook</div>
           <div className=" self-center">Find a new cooking inspiration in your fridge</div>
-          <div className="self-center mt-12"><input type="text" className=" b self-center w-80 h-8 border-gray-50 rounded-md pl-5" onKeyUp={(e)=>accept_input(e)} autoFocus={true}/></div>
+          <div className="self-center mt-12"><input list="inp-datalist" type="text" className=" b self-center w-80 h-8 border-gray-50 rounded-md pl-5" onKeyUp={(e)=>ingr_input(e)} autoFocus={true}/><datalist id="inp-datalist"></datalist></div>
           {render_ingredients()}
           <div className=" text-green-300 self-center mt-4"><div className="bg-green-400 rounded-full w-32 h-32 p-4 c"><Image
                       src="/img/salad.png"
@@ -57,10 +125,9 @@ export default function Main() {
                   />
             </div></div>
           <div className="self-center  mt-auto mb-10 ">AGH | Informatyka i systemy inteligentne | Inżynieria oprogramowania</div>
-          {(next_page)?<Overlay show={change_overlay} switch={load_recipes_switch}/>:null}
+          {(next_page)?<Overlay show={change_overlay} switch={load_recipes_switch} get={swap_get}/>:null}
       </div>
-    <div>{(load_recipes)?<Result ingredients={ingredients} switch={load_recipes_switch} />:null}</div>
-    {(load_recipes)?<Fetcher recipes={actual_recipes}/>:null}
+    <div>{(load_recipes)?<Result ingredients={ingredients} switch={load_recipes_switch} get={type_of_get} recipes={loaded_recipes} />:null}</div>
     </div>
   )
 }

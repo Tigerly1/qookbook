@@ -2,7 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 import 'tailwindcss/tailwind.css'
 function Overlay(props) {
-    console.log(props)
     return (
         <div className="absolute top-0 min-h-screen  flex flex-row flex-wrap w-screen" style={{backgroundColor: "rgba(241, 248, 237, 0.95)"}}>
              <div className="w-screen m-auto text-center text-4xl font-bold">
@@ -13,7 +12,7 @@ function Overlay(props) {
                     alt="Picture of the author"
                     width={100}
                     height={100}
-                    onClick={props.switch}
+                    onClick={()=>{ props.switch(); props.get("full") }}
                 /><div  className="text-green-500 text-bold">
                 WITH ALL INGREDIENTS AVAILABLE
                 </div></div>
@@ -22,7 +21,7 @@ function Overlay(props) {
                     alt="Picture of the author"
                     width={100}
                     height={100}
-                    onClick={props.switch}
+                    onClick={()=>{ props.switch(); props.get("partial") }}
                 /><div  className="text-yellow-400 text-bold">
                 WITHOUT OPTIONAL INGREDIENTS
                 </div></div>
@@ -31,7 +30,7 @@ function Overlay(props) {
                     alt="Picture of the author"
                     width={100}
                     height={100}
-                    onClick={props.switch}
+                    onClick={()=>{ props.switch(); props.get("weak") }}
                 /><div className="text-red-400 text-bold">
                 WITH REQUIRED INGREDIENTS
                 </div></div>
