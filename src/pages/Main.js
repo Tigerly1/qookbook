@@ -1,7 +1,7 @@
 import 'tailwindcss/tailwind.css'
 import React, {useState} from 'react'
 import Image from 'next/image'
-import Result from "./Result"
+import Result from "../components/Result"
 import Overlay from "../components/pages/main/Overlay.js"
 import Fetcher from "../components/pages/result/Fetcher.js"
 export default function Main() {

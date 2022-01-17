@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import Image from 'next/image'
 import 'tailwindcss/tailwind.css'
-import Navbar from "./../components/navbar/navbar"
-import ResultBlock from "./../components/pages/result/ResultBlock"
+import Navbar from "./navbar/navbar"
+import ResultBlock from "./pages/result/ResultBlock"
 import axios from 'axios';
  function Result(props) {
     
