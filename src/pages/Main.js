@@ -18,6 +18,36 @@ export default function Main() {
     
   }
 
+  function fetchyk(){
+    /* var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Cookie", "JSESSIONID=6505852A99F3608F70F351432AFC5B1C");
+
+var raw = JSON.stringify({
+  "authorId": 1,
+  "name": "test1",
+  "description": "eloelo320",
+  "portionSize": 1,
+  "caloriesAmount": 69,
+  "preparationTime": 10,
+  "ingredients": [
+    "testskladnik1"
+  ]
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://qkbk-backend.herokuapp.com/api/v1/add-recipe", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error)); */
+  }
+
   async function Fetcher() {
     let url = "https://qkbk-backend.herokuapp.com/api/v1/get-recipes-by-ingredients-"
     url += type_of_get
@@ -60,6 +90,7 @@ export default function Main() {
   }
 
   function add_ingredient(ingr){
+    fetchyk()
     addIngredient(old => [...old, ingr])
   }
   /* INPUT({defaultValue: value, ref: ref, onBlur: hide,
