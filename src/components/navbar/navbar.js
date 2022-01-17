@@ -14,7 +14,7 @@ function navbar(props) {
                 />
             </div>
             <div className="text-4xl font-daretro text-center block " style={{color: "#97daaf"}}>QookBook</div>
-            <div className="float-right text-red-400 pr-20 text-xl">
+            <div className="float-right text-red-400 pr-20 text-sm">
                 <ol>
                     <li>PANTRY</li>
                     <li>PROFILE</li>

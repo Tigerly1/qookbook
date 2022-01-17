@@ -28,12 +28,12 @@ function ResultBlock(props) {
     const text = {"full": "WITH ALL INGREDIENTS AVAILABLE", "partial":"WITHOUT OPTIONAL INGREDIENTS",  "weak":"WITHOUT REQUIRED INGREDIENTS"}
     return (
         <div className='w-4/5 m-auto relative mt-4'>
-            <div className="text-lg font-daretro text-center  inline-block " style={{color: "#97daaf"}}>{text[props.get]}</div>
-            <div className="text-lg font-daretro text-center inline-block pl-24" style={{color: "#97daaf"}}>  __________________________________________________________________________</div>
-            <div className="text-lg font-daretro text-center inline-block pl-24 float-right">FILTERS</div>
-            <div className="flex flex-row flex-wrap">
+            <div className="text-lg font-daretro text-center w-full inline-block " style={{color: "#97daaf"}}>{text[props.get]}</div>
+           {/*  <div className="text-lg font-daretro text-center inline-block pl-24" style={{color: "#97daaf"}}>  _______________________________</div>
+            <div className="text-lg font-daretro text-center inline-block pl-8 float-right">FILTERS</div> */}
+            <div className="flex flex-row flex-wrap ">
                 {generateBlocks()}
-                {(show)?<Overlay values={current_recipe}/>:null}
+                {(show)?<Overlay recipes={current_recipe}/>:null}
                 {console.log(props.recipes)}
             </div>
             

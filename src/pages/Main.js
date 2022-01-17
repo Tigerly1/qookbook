@@ -109,6 +109,23 @@ export default function Main() {
     addIngredient(result)
 
   }
+  async function login(){
+    /* var myHeaders = new Headers();
+myHeaders.append("Cookie", "JSESSIONID=5558FD3C72C3B583A2788B467875E18D");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+  fetch("https://qkbk-backend.herokuapp.com/login", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error)); */
+
+  window.location.replace("https://qkbk-backend.herokuapp.com/login")
+  }
 
   function render_ingredients(){
     return ingredients.map((ingr, i)=>{
@@ -138,6 +155,13 @@ export default function Main() {
           {(next_page)?<Overlay show={change_overlay} fetcher={Fetcher}/>:null}
       </div>
     <div>{(load_recipes)?<Result ingredients={ingredients} switch={load_recipes_switch} get={type_of_get} recipes={loaded_recipes} />:null}</div>
+    <div className="absolute right-5 top-5"><Image
+                      src="/img/login.png"
+                      alt="Picture of the author"
+                      width={60}
+                      height={60}
+                      onClick={login}
+                  /></div>
     </div>
   )
 }
