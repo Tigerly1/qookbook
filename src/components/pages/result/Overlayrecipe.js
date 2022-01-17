@@ -2,20 +2,20 @@ import React from 'react'
 
 function Overlayrecipe(props) {
     return (
-        <div className="absolute flex-col flex-wrap self-center w-full h-3/4 bg-green-100 border-gray-100 border-2 justify-center rounded-xl">
-             <div className="flex w-full ext-sm md:text-base text-center self-center lg:text-xl font-bold break-words">
+        <div className="absolute flex-col flex-wrap self-center w-full h-full bg-green-100 border-gray-100 border-2 justify-center rounded-xl">
+             <div className="w-full md:text-base text-center m-auto self-center lg:text-xl font-bold break-words">
             {props.recipes.name}
             </div>
-            <div>
+            <div className="w-full md:text-base text-center m-auto self-center lg:text-xl break-words">
             {props.recipes.description}
             </div>
-            <div>
+            <div className="w-full md:text-base text-center m-auto self-center lg:text-xl  break-words">
             Porcja dla {props.recipes.portionSize} osób
             </div>
-            <div>
+            <div className="w-full md:text-base text-center m-auto self-center lg:text-xl  break-words">
             Kalorie: {props.recipes.caloriesAmount}
             </div>
-            <div>
+            <div className="w-full md:text-base text-center m-auto self-center lg:text-xl break-words">
             składniki: {props.recipes.ingredients.map((e,i)=>{
                 if(i == props.recipes.ingredients.length-1) return e + "."
                 return e + ","

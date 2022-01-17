@@ -3,7 +3,7 @@ import Image from 'next/image'
 import 'tailwindcss/tailwind.css'
 function blocks(props) {
     return (
-        <div className="flex justify-center flex-col mt-6 float-left w-28 h-20 lg:w-1/6 lg:h-32 border-2 rounded-xl m-auto mr-2 text-center text-xl bg-gray-100" onClick={()=>props.onclick()}>
+        <div className="flex justify-center flex-col mt-6  w-28 h-20 lg:w-1/6 lg:h-32 border-2 rounded-xl mr-2 text-center text-xl bg-gray-100" onClick={()=>props.onclick()}>
             <div className="flex text-sm md:text-base self-center lg:text-xl font-bold break-words">
             {props.recipes.name}
             </div>
