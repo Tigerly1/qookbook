@@ -8,7 +8,9 @@ import axios from 'axios';
     
 
    
-   
+   function raise(){
+       console.log("raise")
+   }
 
     
     return (
