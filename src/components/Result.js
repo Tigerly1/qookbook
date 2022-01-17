@@ -16,7 +16,7 @@ import axios from 'axios';
     return (
         <div className="min-h-screen" style={{backgroundColor: "#f1f8ed", color: "#97daaf"}}>
             <Navbar switch={props.switch}/>
-            <ResultBlock recipes={props.recipes}></ResultBlock>
+            <ResultBlock recipes={props.recipes} get={props.get}></ResultBlock>
            
             
         </div>
