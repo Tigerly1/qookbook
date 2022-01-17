@@ -48,9 +48,10 @@ fetch("https://qkbk-backend.herokuapp.com/api/v1/add-recipe", requestOptions)
   .catch(error => console.log('error', error)); */
   }
 
-  async function Fetcher() {
+  async function Fetcher(a) {
+    swap_get(a)
     let url = "https://qkbk-backend.herokuapp.com/api/v1/get-recipes-by-ingredients-"
-    url += type_of_get
+    url += a
     let params = "?"
     ingredients.map((e,i)=>{
         if(i>0){
@@ -60,8 +61,8 @@ fetch("https://qkbk-backend.herokuapp.com/api/v1/add-recipe", requestOptions)
         }
     })
     var myHeaders = new Headers();
-        
-    var requestOptions = {
+    console.log(params)
+    var requestOptions = {  
     method: 'GET',
     headers: myHeaders,
     redirect: 'follow'
@@ -69,22 +70,18 @@ fetch("https://qkbk-backend.herokuapp.com/api/v1/add-recipe", requestOptions)
 
     let recipes = await fetch(url+params, requestOptions)
     .then(response => response.text())
-    .then(result => result)
-    .then(result=>{
-        console.log(JSON.parse(result))
-        actual_recipes(JSON.parse(result))
-    })
+    .then(result=>result)
     .catch(error => console.log('error', error));
     
-    
+    actual_recipes(JSON.parse(recipes))
+    setTimeout(() => {}, 1000);
+    load_recipes_switch()
 
     return null;
   }
 
   function load_recipes_switch(){
-    if(!load_recipes){
-      Fetcher()
-    }
+
     lets_load(!load_recipes)
     
   }
@@ -156,7 +153,7 @@ fetch("https://qkbk-backend.herokuapp.com/api/v1/add-recipe", requestOptions)
                   />
             </div></div>
           <div className="self-center  mt-auto mb-10 ">AGH | Informatyka i systemy inteligentne | Inżynieria oprogramowania</div>
-          {(next_page)?<Overlay show={change_overlay} switch={load_recipes_switch} get={swap_get}/>:null}
+          {(next_page)?<Overlay show={change_overlay} fetcher={Fetcher}/>:null}
       </div>
     <div>{(load_recipes)?<Result ingredients={ingredients} switch={load_recipes_switch} get={type_of_get} recipes={loaded_recipes} />:null}</div>
     </div>

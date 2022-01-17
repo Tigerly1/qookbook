@@ -12,7 +12,7 @@ function Overlay(props) {
                     alt="Picture of the author"
                     width={100}
                     height={100}
-                    onClick={()=>{ props.switch(); props.get("full") }}
+                    onClick={()=>{ props.fetcher("full");}}
                 /><div  className="text-green-500 text-bold">
                 WITH ALL INGREDIENTS AVAILABLE
                 </div></div>
@@ -21,7 +21,7 @@ function Overlay(props) {
                     alt="Picture of the author"
                     width={100}
                     height={100}
-                    onClick={()=>{ props.switch(); props.get("partial") }}
+                    onClick={()=>{ props.fetcher("partial");}}
                 /><div  className="text-yellow-400 text-bold">
                 WITHOUT OPTIONAL INGREDIENTS
                 </div></div>
@@ -30,9 +30,9 @@ function Overlay(props) {
                     alt="Picture of the author"
                     width={100}
                     height={100}
-                    onClick={()=>{ props.switch(); props.get("weak") }}
+                    onClick={()=>{  props.fetcher("weak");}}
                 /><div className="text-red-400 text-bold">
-                WITH REQUIRED INGREDIENTS
+                WITHOUT REQUIRED INGREDIENTS
                 </div></div>
             <div className="absolute top-6 left-6">
             <Image
