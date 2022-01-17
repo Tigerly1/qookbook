@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: radial-gradient(
+    123.22% 129.67% at 100.89% -5.6%,
+    #201d47 0%,
+    #17153a 100%
+  );
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  font-family: HelveticaNeue;
+  box-sizing: border-box;
+}
+
+#sidebar {
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(
+    180deg,
+    rgba(38, 34, 80, 0.65) 0%,
+    rgba(27, 25, 66, 0.85) 57.44%,
+    #17163b 100%
+  );
+}
+
+#logo-inside {
+  position: absolute;
+  width: 12px;
+  height: 13px;
+  left: 60px;
+  top: 75px;
+}
+.logo-circle {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  left: 4px;
+  top: 7px;
+  border: 1px solid #ffffff;
+  filter: drop-shadow(0px 6px 9px #181539);
+  border-radius: 4px;
+}
+.logo-rectangle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: 12px;
+  background: linear-gradient(195.4deg, #86e3ff 10.8%, #4cfa9d 163.89%);
+  box-shadow: 0px 6px 25px rgba(154, 242, 237, 0.355129);
+  border-radius: 1px;
+}
+#logo {
+  position: absolute;
+  width: 119px;
+  height: 62px;
+  left: 60px;
+  top: 70px;
+}
+#logo > div {
+  display: inline-block;
+}
+#collapse-icon > div:nth-child(1) {
+  position: absolute;
+  width: 3.23px;
+  height: 6.34px;
+  right: 20.16px;
+  top: 946.64px;
+
+  border: 2.4px solid #6f6c99;
+}
+
+#collapse-icon {
+  position: absolute;
+  width: 50px;
+  height: 42px;
+  left: 90%;
+  top: 95%;
+}
+.sidebar-menu {
+  position: absolute;
+  width: 201px;
+  height: 306px;
+  left: 60px;
+  top: 239px;
+}
+
+.sidebar-menu > div {
+  width: 100%;
+  height: 25px;
+  margin: 15px;
+}
+.sidebar-menu > div > svg {
+  float: left;
+}
+.sidebar-menu > div > a {
+  margin-left: 25px;
+  color: #6f6c99;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+  float: left;
+  margin-top: 4px;
+}
+.sidebar-menu > div:first-of-type > a {
+  color: #53b9ea;
+}
+#active-state {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  left: 0px;
+  top: 250px;
+}
+#notif {
+  /* Notif Badge */
+
+  position: relative;
+  width: 48px;
+  height: 31px;
+  display: inline-block;
+  background: linear-gradient(136.67deg, #ff409a 8.34%, #c438ef 95.26%);
+  mix-blend-mode: normal;
+  opacity: 0.8;
+  box-shadow: 0px 4px 31px #ba1358;
+  border-radius: 14px;
+  color: white !important;
+  text-align: center !important;
+  justify-content: center;
+  font-size: 18px;
+  margin-right: 15px;
+}
+.top-right-nav > * {
+  margin-left: 15px;
+}
+
+#hero {
+  left: 320px;
+  position: absolute;
+  width: calc(100% - 340px);
+  top: 110px;
+  display: flex;
+  flex-direction: column;
+}
+#header {
+  position: absolute;
+  width: calc(100% - 300px);
+  height: 58px;
+  top: 38px;
+  left: 300px;
+}
+#wallets {
+  min-height: 200px;
+  width: 100%;
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.wallet {
+  width: 180px;
+  height: 100px;
+  margin: 10px;
+  border: 1px solid rgb(54, 69, 136) !important;
+  border-radius: 12px;
+  align-items: left;
+  margin: 10px;
+  text-align: center;
+}
