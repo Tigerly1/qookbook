@@ -20,6 +20,9 @@ function Overlayrecipe(props) {
                 if(i == props.recipes.ingredients.length-1) return e + "."
                 return e + ","
             })}
+            <div className="absolute right-4 top-2" onClick={()=>props.show()}>
+                X
+            </div>
             </div>
         </div>
         

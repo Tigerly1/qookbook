@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Result from "../components/Result"
 import Overlay from "../components/pages/main/Overlay.js"
 import Fetcher from "../components/pages/result/Fetcher.js"
+
 export default function Main() {
   const [ingredients, addIngredient] = useState([])
   const [next_page, go_next_page] = useState(false)
@@ -64,7 +65,6 @@ export default function Main() {
   /* INPUT({defaultValue: value, ref: ref, onBlur: hide,
     onKeyUp: (e) => this.acceptKey(e) && hide(),
     autoFocus: true, type: "text", style: {width:"100%"}} */
-
   async function fetchData (string) {
       const url = "https://qkbk-backend.herokuapp.com/api/v1/get-ingredients-by-string"
       var myHeaders = new Headers();
@@ -134,9 +134,9 @@ var requestOptions = {
   }
 
   return (
-    <div>
-        <div className="flex flex-col h-screen justify-start font-sans" style={{minHeight: "-webkit-fill-available",backgroundColor: "#f1f8ed", color: "#97daaf", display: (!load_recipes)?"flex":"none"}}>
-          <div className="text-9xl  self-center font-daretro mt-52 " style={{}}>QookBook</div>
+    <div className="h-full">
+        <div className="flex flex-col h-screen  font-sans" style={{minHeight: "-webkit-fill-available", backgroundColor: "#f1f8ed",color: "#97daaf", display: (!load_recipes)?"flex":"none"}}>
+          <div className="text-2xl md:text-5xl lg:text-9xl self-center font-daretro mt-52 " style={{}}>QookBook</div>
           <div className=" self-center">Find a new cooking inspiration in your fridge</div>
           <div className="self-center mt-12"><input list="inp-datalist" type="text" className=" b self-center w-80 h-10 border-gray-50 rounded-md pl-5" onKeyUp={(e)=>ingr_input(e)} autoFocus={true}/><datalist id="inp-datalist"></datalist></div>
           {/* <div className="self-center mt-6 bg-gray-50 w-96 m-auto rounded-md border-gray border-2">

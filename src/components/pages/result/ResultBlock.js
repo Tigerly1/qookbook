@@ -33,7 +33,7 @@ function ResultBlock(props) {
             <div className="text-lg font-daretro text-center inline-block pl-8 float-right">FILTERS</div> */}
             <div className="flex flex-row flex-wrap ">
                 {generateBlocks()}
-                {(show)?<Overlay recipes={current_recipe}/>:null}
+                {(show)?<Overlay recipes={current_recipe} show={hide_show}/>:null}
                 {console.log(props.recipes)}
             </div>
             
